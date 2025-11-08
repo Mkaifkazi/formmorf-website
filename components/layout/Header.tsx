@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Moon, Sun, Github, Menu, X } from "lucide-react";
+import { Moon, Sun, Github, Menu, X, Star } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useState, useEffect } from "react";
 
@@ -54,30 +54,32 @@ export function Header() {
 
         {/* Right side actions */}
         <div className="flex items-center space-x-4">
-          {/* GitHub Link */}
+          {/* Star on GitHub */}
           <Link
             href="https://github.com/Mkaifkazi/formmorf"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden md:flex items-center text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+            className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-lg border bg-background text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
           >
-            <Github className="h-5 w-5" />
+            <Star className="h-4 w-4" />
+            <span>Star us on GitHub</span>
           </Link>
 
           {/* Theme Toggle */}
-          {mounted && (
-            <button
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="rounded-lg p-2 hover:bg-muted transition-colors"
-              aria-label="Toggle theme"
-            >
-              {theme === "dark" ? (
-                <Sun className="h-5 w-5" />
-              ) : (
-                <Moon className="h-5 w-5" />
-              )}
-            </button>
-          )}
+          <button
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            className="rounded-lg p-2 hover:bg-muted transition-colors"
+            aria-label="Toggle theme"
+            suppressHydrationWarning
+          >
+            {!mounted ? (
+              <div className="h-5 w-5" />
+            ) : theme === "dark" ? (
+              <Sun className="h-5 w-5" />
+            ) : (
+              <Moon className="h-5 w-5" />
+            )}
+          </button>
 
           {/* Mobile menu button */}
           <button

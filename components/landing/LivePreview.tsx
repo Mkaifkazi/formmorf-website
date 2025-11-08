@@ -37,28 +37,18 @@ export function LivePreview() {
           className="mx-auto mt-12 max-w-6xl"
         >
           <div className="relative overflow-hidden rounded-lg border bg-background shadow-2xl">
-            {/* Preview frame */}
-            <div className="aspect-video w-full bg-gradient-to-br from-muted/50 to-muted">
-              <div className="flex h-full items-center justify-center p-8">
-                <div className="text-center">
-                  <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-primary to-secondary">
-                    <ExternalLink className="h-10 w-10 text-white" />
-                  </div>
-                  <h3 className="text-2xl font-bold">Interactive Demo</h3>
-                  <p className="mt-2 text-muted-foreground">
-                    Build and preview forms with all features enabled
-                  </p>
-                  <Link
-                    href="https://formmorf-showcase.vercel.app"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-6 inline-flex items-center justify-center rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow transition-all hover:bg-primary/90 hover:shadow-lg"
-                  >
-                    Open Live Demo
-                    <ExternalLink className="ml-2 h-4 w-4" />
-                  </Link>
-                </div>
-              </div>
+            {/* Video Preview */}
+            <div className="aspect-video w-full">
+              <video
+                className="h-full w-full object-cover"
+                autoPlay
+                muted
+                loop
+                playsInline
+              >
+                <source src="/formmorf-video.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
             </div>
           </div>
         </motion.div>
